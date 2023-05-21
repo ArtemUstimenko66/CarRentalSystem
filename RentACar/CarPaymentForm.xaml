@@ -1,0 +1,81 @@
+﻿<Window x:Class="RentACar.CarPaymentForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks" 
+        xmlns:local="clr-namespace:RentACar"
+        mc:Ignorable="d"
+        Title="CarPaymentForm"  Height="300" Width="500"
+         AllowsTransparency="True"
+         WindowStartupLocation="CenterScreen"
+        Background="Transparent"
+        WindowStyle="None" Loaded="Window_Loaded">
+    <Border CornerRadius="10" Background="#ffffff" MouseDown="Border_mouseDown" MouseLeftButtonDown="Border_mouseLeftButtonDown">
+        <Grid>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="45"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="Payment Information" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="55 0 0 2" FontSize="16" FontWeight="SemiBold" Foreground="#4880ff"/>
+
+                <Icon:PackIconMaterial Kind="CreditCardCheck" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="33 0 0 4" Width="14" Height="14" Foreground="#ff9d00" />
+                <Button Width="50" Height="25" Margin="450 0 0 5" Click="btn_close" Style="{StaticResource MaterialDesignToolButton}">
+                    <Icon:PackIconMaterial Kind="Close"/>
+                </Button>
+                <Separator Margin="0 30 0 0" Background="#e1e6eb"/>
+
+            </Grid>
+            <TextBlock Text="Order price" FontWeight="Bold" Margin="0 0 280 170" Width="70" Height="20"/>
+            <TextBlock  FontWeight="Bold" Margin="0 0 140 170" Width="70" Height="20" Name="txtBlockOrderPrice"/>
+
+            <TextBlock Text="Paid" FontWeight="Bold" Margin="0 0 25 170" Width="30" Height="20"/>
+            <TextBlock  FontWeight="Bold" Margin="90 0 0 170" Width="70" Height="20" Name="txtBlockPaid"/>
+
+            <TextBlock Text="Debt Amount" FontWeight="Bold" Margin="270 0 10 170" Width="80" Height="20"/>
+            <TextBlock  FontWeight="Bold" Margin="420 0 0 170" Width="70" Height="20" Name="txtBlockDebtAmount"/>
+            
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBox  x:Name="txtPaymentDate"  
+                         materialDesign:HintAssist.Hint="Enter Payment Date" BorderThickness="2"
+                           Height="50" Width="140" Grid.Row="3" Grid.Column="0"
+                         BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
+
+
+                <ComboBox  x:Name="cbPaymentType"  
+                         materialDesign:HintAssist.Hint="Select PaymentType " BorderThickness="2"
+                           Height="50" Width="140" Grid.Row="3" Grid.Column="1"
+                         BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignComboBox}"/>
+
+                <ComboBox  x:Name="cbPaymentMethod"  
+                         materialDesign:HintAssist.Hint="Select Payment Method" BorderThickness="2"
+                           Height="50" Width="140" Grid.Row="4" Grid.Column="0"
+                         BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignComboBox}"/>
+                
+                <TextBox  x:Name="txtDebtAmount"  
+                         materialDesign:HintAssist.Hint="Enter Debt Amount" BorderThickness="2"
+                           Height="50" Width="140" Grid.Row="4" Grid.Column="1"
+                         BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
+
+                <Button Height="40" Width="130" Grid.Row="5" Grid.Column="2" Click="btn_CarPay_click">Pay Off</Button>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>

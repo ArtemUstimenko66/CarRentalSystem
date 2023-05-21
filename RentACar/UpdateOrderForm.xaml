@@ -1,0 +1,85 @@
+﻿<Window x:Class="RentACar.UpdateOrderForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RentACar"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks" 
+       Title="UpdateUserForm" Height="350" Width="750"
+           MinWidth="600" MinHeight="300"
+         AllowsTransparency="True"
+         WindowStartupLocation="CenterScreen"
+        Background="Transparent"
+        WindowStyle="None">
+    <Border CornerRadius="10" Background="#ffffff" MouseDown="Border_mouseDown" MouseLeftButtonDown="Border_mouseLeftButtonDown">
+        <Grid>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="45"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="Update User" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="55 0 0 2" FontSize="16" FontWeight="SemiBold" Foreground="#4880ff"/>
+                <Button Width="50" Height="25" Margin="700 0 0 5" Click="btn_close" Style="{StaticResource MaterialDesignToolButton}">
+                    <Icon:PackIconMaterial Kind="Close"/>
+                </Button>
+                <Icon:PackIconMaterial Kind="Car" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="33 0 0 4" Width="14" Height="14" Foreground="#ff9d00" />
+
+                <Separator Margin="0 30 0 0" Background="#e1e6eb"/>
+
+            </Grid>
+            <Grid >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="0"/>
+
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBox  x:Name="txtUserName"  
+                         materialDesign:HintAssist.Hint="Enter new user name" BorderThickness="2"
+                          Grid.Row="3" Height="50" Width="180"
+                         BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
+
+                <TextBox  x:Name="txtRentalDate"  
+                         materialDesign:HintAssist.Hint="Enter new Rental Date" BorderThickness="2"
+                           Height="50" Width="180" Grid.Row="3" Grid.Column="1" TextChanged="txtRentalDateTextCh"
+                         BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
+
+                <TextBox  x:Name="txtReturnDate"  
+                         materialDesign:HintAssist.Hint="Enter new Return Date" BorderThickness="2"
+                           Height="50" Width="180" Grid.Row="3" Grid.Column="2" TextChanged="txtReturnDateTextCh"
+                         BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
+
+                <TextBox  x:Name="txtAmountOfDays" IsEnabled="False" Foreground="Gray"
+                                     materialDesign:HintAssist.Hint="Amount OF Days" BorderThickness="2"
+                                     Grid.Row="4" Grid.Column="1" Height="50" Width="180"
+                                     BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
+
+                <TextBox  x:Name="txtRatePerDay"  Foreground="Gray"
+                                     materialDesign:HintAssist.Hint="Rate Per Day " BorderThickness="2"
+                                     Grid.Row="4" Grid.Column="0" Height="50" Width="180" TextChanged="txtTotalAmountCh"
+                                     BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
+                
+                <TextBox  x:Name="txtTotalAmount" IsEnabled="False" Foreground="Gray"
+                                     materialDesign:HintAssist.Hint="Total Amount" BorderThickness="2"
+                                     Grid.Row="4" Grid.Column="2" Height="50" Width="180" TextChanged="txtRatePerDayCh"
+                                     BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
+
+                <Button Height="40" Width="150" Grid.Row="5" Grid.Column="2" Click="btn_UpdateOrderForm_click">Update</Button>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>

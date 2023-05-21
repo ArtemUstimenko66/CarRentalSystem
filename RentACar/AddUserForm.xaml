@@ -1,0 +1,107 @@
+﻿<Window x:Class="RentACar.AddUserForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks" 
+        mc:Ignorable="d"
+        Title="AddUserForm" Height="350" Width="750"
+        MinWidth="600" MinHeight="300"
+         AllowsTransparency="True"
+         WindowStartupLocation="CenterScreen"
+        Background="Transparent"
+        WindowStyle="None"
+        >
+    <Border CornerRadius="10" Background="#ffffff" MouseDown="Border_mouseDown" MouseLeftButtonDown="Border_mouseLeftButtonDown">
+        <Grid>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="45"/>
+                    <RowDefinition Height="*"/>
+
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="Adding User" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="55 0 0 2" FontSize="16" FontWeight="SemiBold" Foreground="#4880ff"/>
+                <Button Width="50" Height="25" Margin="700 0 0 5" Click="btn_close" Style="{StaticResource MaterialDesignToolButton}">
+                    <Icon:PackIconMaterial Kind="Close"/>
+                </Button>
+                <Icon:PackIconMaterial Kind="Account" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="33 0 0 4" Width="14" Height="14" Foreground="#ff9d00" />
+
+                <Separator Margin="0 30 0 0" Background="#e1e6eb"/>
+
+            </Grid>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="0"/>
+
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                
+                <TextBox  x:Name="txtLogin"  
+                         materialDesign:HintAssist.Hint="Enter Login" BorderThickness="2"
+                          Grid.Row="3" Height="50" Width="180"
+                         BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
+
+                <TextBox  x:Name="txtPhone"  
+                         materialDesign:HintAssist.Hint="Enter Phone" BorderThickness="2"
+                           Height="50" Width="180" Grid.Row="3" Grid.Column="1"
+                         BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
+
+                <TextBox  x:Name="txtEmail"  
+                         materialDesign:HintAssist.Hint="Enter Email" BorderThickness="2"
+                           Height="50" Width="180" Grid.Row="3" Grid.Column="2"
+                         BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
+
+
+                <TextBox  x:Name="txtAddress"  
+                         materialDesign:HintAssist.Hint="Enter Address" BorderThickness="2"
+                           Height="50" Width="180" Grid.Row="4" Grid.Column="0"
+                         BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
+
+                <TextBox  x:Name="txtGender"  
+                         materialDesign:HintAssist.Hint="Enter Gender" BorderThickness="2"
+                           Height="50" Width="180" Grid.Row="4" Grid.Column="1"
+                         BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
+
+                <TextBox  x:Name="txtDateOfBirth"  
+                         materialDesign:HintAssist.Hint="Enter Date of Birth" BorderThickness="2"
+                           Height="50" Width="180" Grid.Row="4" Grid.Column="2"
+                         BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
+
+                <PasswordBox x:Name="txtPassword" 
+                             materialDesign:HintAssist.Hint="Enter new Password" BorderThickness="2"
+                             Height="50" Width="180" Grid.Row="5" Grid.Column="1"
+                             BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedPasswordBox}"/>
+
+
+                <PasswordBox x:Name="txtResetPassword" 
+                             materialDesign:HintAssist.Hint="Enter new Password" BorderThickness="2"
+                             Height="50" Width="180" Grid.Row="5" Grid.Column="2"
+                             BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedPasswordBox}"/>
+                <Border Width="100" Height="90" CornerRadius="80" BorderThickness="1"  Grid.Row="3" Grid.Column="3" Margin="44,0,44,0" x:Name="myImage">
+                    <Border.Background>
+                        <ImageBrush ImageSource="F:\c#\RentACar\RentACar\Images\user.png"/>
+                    </Border.Background>
+                </Border>
+
+                <Button Background="LightGreen" Height="40" Width="100" Grid.Row="4" Grid.Column="3" Click="btn_browse_click">Browse</Button>
+
+                <Button Height="40" Width="150" Grid.Row="5" Grid.Column="0" Click="btn_AddUserForm_click">Save</Button>
+            </Grid>
+            <Label Content="Label" HorizontalAlignment="Left" Margin="783,228,0,0" VerticalAlignment="Top"/>
+        </Grid>
+    </Border>
+</Window>

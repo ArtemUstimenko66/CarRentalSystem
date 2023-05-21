@@ -1,0 +1,239 @@
+﻿<UserControl x:Class="RentACar.Controls.OrdersProfile"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:RentACar.Controls"
+             xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+            d:DesignHeight="720" d:DesignWidth="800" Background="SkyBlue">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis"/>
+    </UserControl.Resources>
+    <Border   
+        Background="{Binding Background, RelativeSource={RelativeSource AncestorType=UserControl}}"
+            BorderBrush="{Binding BorderBrush, RelativeSource={RelativeSource AncestorType=UserControl}}"
+            BorderThickness="{Binding BorderThickness, RelativeSource={RelativeSource AncestorType=UserControl}}"
+            CornerRadius="10"
+>
+        <Grid Margin="30 20 20 20">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="10">
+               
+                <Border  Width="100" Height="100" CornerRadius="80" BorderThickness="1"  x:Name="myImage">
+
+                    
+                    <Border.Background>
+                        <ImageBrush ImageSource="F:\c#\RentACar\RentACar\Images\mersedes.png"/>
+                    </Border.Background>
+
+                </Border>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"  Height="23" Margin="20">
+
+                    <StackPanel  Orientation="Horizontal" Margin="0 3" >
+                        <materialDesign:PackIcon Kind="OrderCheckboxAscending" Foreground="Gray"/>
+                        <TextBlock  x:Name="txtOrderNumber"/>
+                    </StackPanel>
+
+                    <StackPanel  Orientation="Horizontal" Margin="50 3 0 0" >
+                        <materialDesign:PackIcon Kind="Car" Foreground="Gray"/>
+                        <TextBlock  x:Name="txtModel"/>
+                    </StackPanel>
+                    
+                    <StackPanel  Orientation="Horizontal" Margin="50 3 0 0" >
+                        <materialDesign:PackIcon Kind="Car" Foreground="Gray"/>
+                        <TextBlock  x:Name="txtMark"/>
+                    </StackPanel>
+
+                    <StackPanel  Orientation="Horizontal" Margin="50 3 0 0" >
+                        <materialDesign:PackIcon Kind="CarRental" Foreground="Gray"/>
+                        <TextBlock Text=":" x:Name="txtRentalDate"/>
+                    </StackPanel>
+
+                    <StackPanel  Orientation="Horizontal" Margin="50 3 0 0 " >
+                        <materialDesign:PackIcon Kind="CarRental" Foreground="Gray"/>
+                        <TextBlock  x:Name="txtReturnDate"/>
+                    </StackPanel>
+
+
+
+                </StackPanel>
+              
+            </StackPanel>
+
+            <Separator Height="1" Grid.Row="3" Background="#dae2ea" Margin="0 -1 0 10"/>
+
+
+
+            <!--TabControl-->
+            <TabControl Grid.Row="5">
+                
+              
+                
+                <TabItem Header="Return The Car">
+                    <Grid Grid.Column="1" Margin="30 20 20 20">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <Separator Height="1" Grid.Row="3" Background="#dae2ea" Margin="0 10 0 10"/>
+                        <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0 10 0 0">
+                            <Grid Width="700"  Grid.Row="4">
+                                <TextBox x:Name="txtSearch" Style="{StaticResource CustomTextBoxStyle}" TextChanged="textChangedSearch" Width="150" Height="30" HorizontalAlignment="Right" Margin="0 30 540 0"/>
+                                <Button Style="{StaticResource addButton}" Click="btn_ReturnTheCar_click" Margin="0 30 380 0" Name="btnReturnTheCar">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Icon:PackIconMaterial Kind="Plus" VerticalAlignment="Center" Width="11" Height="11" Margin="0 1 8 0"/>
+                                        <TextBlock Text="Return The Car"/>
+                                    </StackPanel>
+                                </Button>
+                                <Icon:PackIconMaterial Kind="Magnify" Width="15" Height="15" VerticalAlignment="Center" Margin="0 30 550 0"
+                  Foreground="#b0b9c6" HorizontalAlignment="Right"/>
+                            </Grid>
+                        </StackPanel>
+
+                        <!--DataGrid-->
+                        <DataGrid x:Name="ReturnCarsDataGrid" AutoGenerateColumns="False" Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" Grid.Row="5">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="OrderNumber" IsReadOnly="True" Width="*" Binding="{Binding OrderNumber}"/>
+                                <DataGridTextColumn Header="ReturnDateCar" IsReadOnly="True" Width="*" Binding="{Binding ReturnDateCar}"/>
+                                <DataGridTextColumn Header="CarReturnTime" IsReadOnly="True" Width="*" Binding="{Binding CarReturnTime}"/>
+
+                                <DataGridTemplateColumn Header="Operations" IsReadOnly="True" Width="auto">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal">
+                                                <Button Style="{StaticResource gridButtonRemove}" Click="btnRemoveReturnCar_click" Margin="0 0 5 0">
+                                                    <Icon:PackIconMaterial Kind="DeleteOutline" Style="{StaticResource gridButtonIcon}"/>
+                                                </Button>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                </TabItem>
+                
+                
+                <TabItem Header="Payments">
+                    <Grid Grid.Column="1" Margin="30 20 20 20">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+
+                        <Separator Height="1" Grid.Row="3" Background="#dae2ea" Margin="0 10 0 10"/>
+
+                        <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0 10 0 0">
+                            <Grid Width="700"  Grid.Row="4">
+                                <TextBox x:Name="txtSearchPayments" Style="{StaticResource CustomTextBoxStyle}" TextChanged="textChangedSearch" Width="150" Height="30" HorizontalAlignment="Right" Margin="0 30 540 0"/>
+                                <Button Style="{StaticResource addButton}" Margin="0 30 380 0" Click="btn_PayOffTheRent_click" Name="btnPayments">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Icon:PackIconMaterial Kind="Plus" VerticalAlignment="Center" Width="11" Height="11" Margin="0 1 8 0"/>
+                                        <TextBlock Text="Pay off the rent"/>
+                                    </StackPanel>
+                                </Button>
+                                <Icon:PackIconMaterial Kind="Magnify" Width="15" Height="15" VerticalAlignment="Center" Margin="0 30 550 0"
+                  Foreground="#b0b9c6" HorizontalAlignment="Right"/>
+                            </Grid>
+                        </StackPanel>
+
+                        <!--DataGrid-->
+                        <DataGrid x:Name="CarPaymentsPaymentsInfoDataGrid" AutoGenerateColumns="False" Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" Grid.Row="5">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="PaymentDate" IsReadOnly="True" Width="*" Binding="{Binding PaymentDate}"/>
+                                <DataGridTextColumn Header="PaymentType" IsReadOnly="True" Width="*" Binding="{Binding PaymentType}"/>
+                                <DataGridTextColumn Header="PaymentMethod" IsReadOnly="True" Width="*" Binding="{Binding PaymentMethod}"/>
+                                <DataGridTextColumn Header="DebtAmount" IsReadOnly="True" Width="*" Binding="{Binding DebtAmount}"/>
+                                <DataGridTemplateColumn Header="Operations" IsReadOnly="True" Width="auto">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal">
+                                                <Button Style="{StaticResource gridButtonRemove}" Click="btnRemovePaymentForRent_click" Margin="0 0 5 0">
+                                                    <Icon:PackIconMaterial Kind="DeleteOutline" Style="{StaticResource gridButtonIcon}"/>
+                                                </Button>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Damage">
+                    <Grid Grid.Column="1" Margin="30 20 20 20">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        
+                        <Separator Height="1" Grid.Row="3" Background="#dae2ea" Margin="0 10 0 10"/>
+                        <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0 10 0 0">
+                            <Grid Width="700"  Grid.Row="4">
+                                <TextBox x:Name="txtSearchCarCondtion" Style="{StaticResource CustomTextBoxStyle}" TextChanged="textChangedSearchCarCondition" Width="150" Height="30" HorizontalAlignment="Right" Margin="0 30 540 0"/>
+                                <Button Style="{StaticResource addButton}" Click="btn_CarCondition_click" Margin="0 30 380 0"  Name="btnCarCondition">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Icon:PackIconMaterial Kind="Plus" VerticalAlignment="Center" Width="11" Height="11" Margin="0 1 8 0"/>
+                                        <TextBlock Text="Add info "/>
+                                    </StackPanel>
+                                </Button>
+                                <Icon:PackIconMaterial Kind="Magnify" Width="15" Height="15" VerticalAlignment="Center" Margin="0 30 550 0"
+                  Foreground="#b0b9c6" HorizontalAlignment="Right"/>
+                            </Grid>
+                        </StackPanel>
+                        
+                        <!--DataGrid-->
+                        <DataGrid x:Name="CarConditionInfoDataGrid" AutoGenerateColumns="False" Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" Grid.Row="5">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="DateOfDamage" IsReadOnly="True" Width="*" Binding="{Binding DateOfDamage}"/>
+                                <DataGridTextColumn Header="CarCondition" IsReadOnly="True" Width="*" Binding="{Binding CarConditions}"/>
+                                <DataGridTextColumn Header="DamageDescription" IsReadOnly="True" Width="*" Binding="{Binding DamageDescription}"/>
+                                <DataGridTextColumn Header="AmountForDamage" IsReadOnly="True" Width="*" Binding="{Binding AmountForDamage}"/>
+                                <DataGridTemplateColumn Header="Operations" IsReadOnly="True" Width="auto">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal">
+                                                <Button Style="{StaticResource gridButtonRemove}" Click="btnRemoveCarCondition_click" Margin="0 0 5 0">
+                                                    <Icon:PackIconMaterial Kind="DeleteOutline" Style="{StaticResource gridButtonIcon}"/>
+                                                </Button>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                </TabItem>
+
+
+            </TabControl>
+        </Grid>
+    </Border>
+</UserControl>

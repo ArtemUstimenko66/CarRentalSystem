@@ -1,0 +1,11 @@
+<FileList>
+
+<File Reference="Syncfusion.SfProgressBar.WPF.dll">
+	<ContainsControls>True</ContainsControls>
+	<ToolboxItems UIFramework="WPF" VSCategory="Syncfusion WPF UI Controls (NuGet)" BlendCategory="Syncfusion WPF UI Controls (NuGet)">
+		<Item Type="Syncfusion.UI.Xaml.ProgressBar.SfCircularProgressBar"/>
+		<Item Type="Syncfusion.UI.Xaml.ProgressBar.SfLinearProgressBar"/>
+		<Item Type="Syncfusion.UI.Xaml.ProgressBar.SfStepProgressBar"/>
+	</ToolboxItems>
+</File>
+</FileList>

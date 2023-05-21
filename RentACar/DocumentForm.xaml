@@ -1,0 +1,60 @@
+﻿<Window x:Class="RentACar.DocumentForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks" 
+        xmlns:local="clr-namespace:RentACar"
+        mc:Ignorable="d"
+    Title="DocumentForm"  Height="300" Width="450"
+         AllowsTransparency="True"
+         WindowStartupLocation="CenterScreen"
+        Background="Transparent"
+        WindowStyle="None">
+    <Border CornerRadius="10" Background="#ffffff" MouseDown="Border_mouseDown" MouseLeftButtonDown="Border_mouseLeftButtonDown">
+        <Grid>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="45"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="Document Info" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="55 0 0 2" FontSize="16" FontWeight="SemiBold" Foreground="#4880ff"/>
+                <Icon:PackIconMaterial Kind="FileDocument" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="33 0 0 4" Width="14" Height="14" Foreground="#ff9d00" />
+                <Button Width="50" Height="25" Margin="400 0 0 5" Click="btn_close" Style="{StaticResource MaterialDesignToolButton}">
+                    <Icon:PackIconMaterial Kind="Close"/>
+                </Button>
+                <Separator Margin="0 30 0 0" Background="#e1e6eb"/>
+            </Grid>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="150"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBox  x:Name="txtDocumentLink"  
+                         materialDesign:HintAssist.Hint="Document Link" BorderThickness="2"
+                           Height="50" Width="290" Grid.Row="3" Grid.Column="0" IsEnabled="False"
+                         BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
+
+                <TextBox  x:Name="txtDocumentName"  
+                         materialDesign:HintAssist.Hint="Enter Document Name" BorderThickness="2"
+                           Height="50" Width="290" Grid.Row="4" Grid.Column="0"
+                         BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
+
+                <Button Height="40" Width="130" Grid.Row="4" Grid.Column="2" Click="btn_DocumentAdd_click">Add Doc</Button>
+                <Button Height="40" Width="130" Grid.Row="3" Grid.Column="2" Click="btn_BrowseDoc_click">Browse</Button>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>
